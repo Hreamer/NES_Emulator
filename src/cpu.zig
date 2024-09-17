@@ -34,6 +34,7 @@ const CPU = struct {
 
             //Stack instructions are implied and therefore are one byte no operands. The stack is always on page one ($100-$1FF) and works top down.
             0x9a => {
+                //TXS ( Transfer X to Stack ptr )
                 return Instruction{
                     .mnemonic = "TXS",
                     .cycles = 2,
@@ -41,6 +42,7 @@ const CPU = struct {
                 };
             },
             0xBA => {
+                //TSX ( Transfer Stack ptr to X )
                 return Instruction{
                     .mnemonic = "TSX",
                     .cycles = 2,
@@ -48,6 +50,7 @@ const CPU = struct {
                 };
             },
             0x48 => {
+                //PHA ( PusH Accumulator )
                 return Instruction{
                     .mnemonic = "PHA",
                     .cycles = 3,
@@ -55,6 +58,7 @@ const CPU = struct {
                 };
             },
             0x68 => {
+                //PLA ( PuLl Accumulator )
                 return Instruction{
                     .mnemonic = "PLA",
                     .cycles = 4,
@@ -62,6 +66,7 @@ const CPU = struct {
                 };
             },
             0x08 => {
+                //PHP ( PusH Processor status )
                 return Instruction{
                     .mnemonic = "PHP",
                     .cycles = 3,
@@ -69,6 +74,7 @@ const CPU = struct {
                 };
             },
             0x28 => {
+                //PLP ( PuLl Processor Status )
                 return Instruction{
                     .mnemonic = "PLP",
                     .cycles = 4,
