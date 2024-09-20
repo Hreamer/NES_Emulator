@@ -812,22 +812,405 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
 
         //INC ( INCrement memory )
+        0xE6 => {
+            return Instruction{
+                .mnemonic = "INC",
+                .cycles = 5,
+                .opcode = 0xE6,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xF6 => {
+            return Instruction{
+                .mnemonic = "INC",
+                .cycles = 6,
+                .opcode = 0xF6,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xEE => {
+            return Instruction{
+                .mnemonic = "INC",
+                .cycles = 6,
+                .opcode = 0xEE,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xFE => {
+            return Instruction{
+                .mnemonic = "INC",
+                .cycles = 7,
+                .opcode = 0xFE,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //EOR ( bitwise Exclusive OR )
+        0x49 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 2,
+                .opcode = 0x49,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x45 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 3,
+                .opcode = 0x45,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x55 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 4,
+                .opcode = 0x55,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x4D => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 4,
+                .opcode = 0x4D,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0x5D => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 4,
+                .opcode = 0x5D,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0x59 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 4,
+                .opcode = 0x59,
+                .adressMode = "absY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0x41 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 6,
+                .opcode = 0x41,
+                .adressMode = "indrX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x51 => {
+            return Instruction{
+                .mnemonic = "EOR",
+                .cycles = 5,
+                .opcode = 0x51,
+                .adressMode = "indrY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
 
         //DEC ( DECrement memory )
+        0xC6 => {
+            return Instruction{
+                .mnemonic = "DEC",
+                .cycles = 5,
+                .opcode = 0xC6,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xD6 => {
+            return Instruction{
+                .mnemonic = "DEC",
+                .cycles = 6,
+                .opcode = 0xD6,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xCE => {
+            return Instruction{
+                .mnemonic = "DEC",
+                .cycles = 6,
+                .opcode = 0xCE,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xDE => {
+            return Instruction{
+                .mnemonic = "DEC",
+                .cycles = 7,
+                .opcode = 0xDE,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //CPY ( ComPare Y register )
+        0xC0 => {
+            return Instruction{
+                .mnemonic = "CPY",
+                .cycles = 2,
+                .opcode = 0xC0,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xC4 => {
+            return Instruction{
+                .mnemonic = "CPY",
+                .cycles = 3,
+                .opcode = 0xC4,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xCC => {
+            return Instruction{
+                .mnemonic = "CPY",
+                .cycles = 3,
+                .opcode = 0xCC,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //CPX ( ComPare X register )
+        0xE0 => {
+            return Instruction{
+                .mnemonic = "CPX",
+                .cycles = 2,
+                .opcode = 0xE0,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xE4 => {
+            return Instruction{
+                .mnemonic = "CPX",
+                .cycles = 3,
+                .opcode = 0xE4,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xEC => {
+            return Instruction{
+                .mnemonic = "CPX",
+                .cycles = 3,
+                .opcode = 0xEC,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //CMP ( CoMPare accumulator )
+        0xC9 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 2,
+                .opcode = 0xC9,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xC5 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 3,
+                .opcode = 0xC5,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xD5 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 4,
+                .opcode = 0xD5,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xCD => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 4,
+                .opcode = 0xCD,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xDD => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 4,
+                .opcode = 0xDD,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xD9 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 4,
+                .opcode = 0xD9,
+                .adressMode = "absY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xC1 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 6,
+                .opcode = 0xC1,
+                .adressMode = "indrX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xD1 => {
+            return Instruction{
+                .mnemonic = "CMP",
+                .cycles = 5,
+                .opcode = 0xD1,
+                .adressMode = "indrY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
 
         //BRK ( BReaK )
+        0x00 => {
+            return Instruction{
+                .mnemonic = "BRK",
+                .cycles = 7,
+                .opcode = 0x00,
+                .adressMode = "impl",
+            };
+        },
 
         //Branch Instructions
+        //These are unique relative mode addressing, 2 cycles if not taken, 1 more if taken, 1 more if page boundry crossed.
+        //For that reason we are starting at 2 cycles and will adjust on the fly as needed
+        0x10 => {
+            return Instruction{
+                .mnemonic = "BPL", //Branch on Plus
+                .cycles = 2,
+                .opcode = 0x10,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x30 => {
+            return Instruction{
+                .mnemonic = "BMI", //Branch on MInus
+                .cycles = 2,
+                .opcode = 0x30,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x50 => {
+            return Instruction{
+                .mnemonic = "BVC", //Branch on oVerflow Clear
+                .cycles = 2,
+                .opcode = 0x50,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x70 => {
+            return Instruction{
+                .mnemonic = "BVS", //Branch on oVerflow Set
+                .cycles = 2,
+                .opcode = 0x70,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x90 => {
+            return Instruction{
+                .mnemonic = "BCC", //Branch on Carry Clear
+                .cycles = 2,
+                .opcode = 0x90,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xB0 => {
+            return Instruction{
+                .mnemonic = "BCS", //Branch on Carry Set
+                .cycles = 2,
+                .opcode = 0xB0,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xD0 => {
+            return Instruction{
+                .mnemonic = "BNE", //Branch on Not Equal
+                .cycles = 2,
+                .opcode = 0xD0,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xF0 => {
+            return Instruction{
+                .mnemonic = "BCS", //Branch on EQual
+                .cycles = 2,
+                .opcode = 0xF0,
+                .adressMode = "rel",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
 
         //BIT ( test BITs )
+        0x24 => {
+            return Instruction{
+                .mnemonic = "BIT",
+                .cycles = 3,
+                .opcode = 0x24,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x2C => {
+            return Instruction{
+                .mnemonic = "BIT",
+                .cycles = 4,
+                .opcode = 0x2C,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //ASL ( Arithmetic Shift Left )
 
