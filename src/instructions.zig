@@ -86,7 +86,71 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
             };
         },
 
-        //Register Instructions
+        //Register Instructions: All Immediate adressing, 2 cycles, different mnemonic
+        0xAA => {
+            return Instruction{
+                .mnemonic = "TAX", //Transfer A to X
+                .cycles = 2,
+                .opcode = 0xAA,
+                .adressMode = "impl",
+            };
+        },
+        0x8A => {
+            return Instruction{
+                .mnemonic = "TXA", //Transfer X to A
+                .cycles = 2,
+                .opcode = 0x8A,
+                .adressMode = "impl",
+            };
+        },
+        0xCA => {
+            return Instruction{
+                .mnemonic = "DEX", //DEcrement X
+                .cycles = 2,
+                .opcode = 0xCA,
+                .adressMode = "impl",
+            };
+        },
+        0xE8 => {
+            return Instruction{
+                .mnemonic = "INX", //INcrement X
+                .cycles = 2,
+                .opcode = 0xE8,
+                .adressMode = "impl",
+            };
+        },
+        0xA8 => {
+            return Instruction{
+                .mnemonic = "TAY", //Transfer A to Y
+                .cycles = 2,
+                .opcode = 0xA8,
+                .adressMode = "impl",
+            };
+        },
+        0x98 => {
+            return Instruction{
+                .mnemonic = "TYA", //Transfer Y to A
+                .cycles = 2,
+                .opcode = 0x98,
+                .adressMode = "impl",
+            };
+        },
+        0x88 => {
+            return Instruction{
+                .mnemonic = "DEY", //DEcrement Y
+                .cycles = 2,
+                .opcode = 0x88,
+                .adressMode = "impl",
+            };
+        },
+        0xC8 => {
+            return Instruction{
+                .mnemonic = "INY", //INcrement Y
+                .cycles = 2,
+                .opcode = 0xC8,
+                .adressMode = "impl",
+            };
+        },
 
         //ROL ( ROtate Left )
 
@@ -105,6 +169,81 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
 
         //SBC ( SuBtract with Carry )
+        0xE9 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 2,
+                .opcode = 0xE9,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xE5 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 3,
+                .opcode = 0xE5,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xF5 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 4,
+                .opcode = 0xF5,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xED => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 4,
+                .opcode = 0xED,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xFD => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 4,
+                .opcode = 0xFD,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xF9 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 4,
+                .opcode = 0xF9,
+                .adressMode = "absY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xE1 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 6,
+                .opcode = 0xE1,
+                .adressMode = "indrX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xF1 => {
+            return Instruction{
+                .mnemonic = "SBC",
+                .cycles = 5,
+                .opcode = 0xF1,
+                .adressMode = "indrY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
 
         //STA ( STore Accumulator )
         0x85 => {
@@ -458,6 +597,81 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
 
         //LDA ( LoaD Accumulator )
+        0xA9 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 2,
+                .opcode = 0xA9,
+                .adressMode = "immd",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xA5 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 3,
+                .opcode = 0xA5,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xB5 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 4,
+                .opcode = 0xB5,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xAD => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 4,
+                .opcode = 0xAD,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xBD => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 4,
+                .opcode = 0xBD,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xB9 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 4,
+                .opcode = 0xB9,
+                .adressMode = "absY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0xA1 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 6,
+                .opcode = 0xA1,
+                .adressMode = "indrX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0xB1 => {
+            return Instruction{
+                .mnemonic = "LDA",
+                .cycles = 5,
+                .opcode = 0xB1,
+                .adressMode = "indrY",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
 
         //JSR ( Jump to SubRoutine )
         0x20 => {
