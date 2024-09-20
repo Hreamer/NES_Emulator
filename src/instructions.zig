@@ -153,10 +153,110 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
 
         //ROL ( ROtate Left )
+        0x2A => {
+            return Instruction{
+                .mnemonic = "ROL", //INcrement Y
+                .cycles = 2,
+                .opcode = 0x2A,
+                .adressMode = "accum",
+            };
+        },
+        0x26 => {
+            return Instruction{
+                .mnemonic = "ROL", //INcrement Y
+                .cycles = 5,
+                .opcode = 0x26,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x36 => {
+            return Instruction{
+                .mnemonic = "ROL", //INcrement Y
+                .cycles = 6,
+                .opcode = 0x36,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x2E => {
+            return Instruction{
+                .mnemonic = "ROL", //INcrement Y
+                .cycles = 6,
+                .opcode = 0x2E,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0x3E => {
+            return Instruction{
+                .mnemonic = "ROL", //INcrement Y
+                .cycles = 7,
+                .opcode = 0x3E,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //ROR ( ROtate Right )
+        0x6A => {
+            return Instruction{
+                .mnemonic = "ROR", //INcrement Y
+                .cycles = 2,
+                .opcode = 0x6A,
+                .adressMode = "accum",
+            };
+        },
+        0x66 => {
+            return Instruction{
+                .mnemonic = "ROR", //INcrement Y
+                .cycles = 5,
+                .opcode = 0x66,
+                .adressMode = "ZP",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x76 => {
+            return Instruction{
+                .mnemonic = "ROR", //INcrement Y
+                .cycles = 6,
+                .opcode = 0x76,
+                .adressMode = "ZPX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+            };
+        },
+        0x6E => {
+            return Instruction{
+                .mnemonic = "ROR", //INcrement Y
+                .cycles = 6,
+                .opcode = 0x6E,
+                .adressMode = "abs",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
+        0x7E => {
+            return Instruction{
+                .mnemonic = "ROR", //INcrement Y
+                .cycles = 7,
+                .opcode = 0x7E,
+                .adressMode = "absX",
+                .operand1 = Memory.memorySpace.getByte(cpu.PC + 1),
+                .operand2 = Memory.memorySpace.getByte(cpu.PC + 2),
+            };
+        },
 
         //RTI ( ReTurn from Interrupt )
+        0x40 => {
+            return Instruction{
+                .mnemonic = "RTI", //INcrement Y
+                .cycles = 6,
+                .opcode = 0x40,
+                .adressMode = "impl",
+            };
+        },
 
         //RTS ( ReTurn from Subroutine )
         0x60 => {
