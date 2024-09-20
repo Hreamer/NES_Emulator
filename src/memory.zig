@@ -11,3 +11,5 @@ const Memory = struct {
         }
     }
 };
+
+var memorySpace: Memory = Memory();
