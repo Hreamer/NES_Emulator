@@ -137,7 +137,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x88 => {
             return Instruction{
-                .mnemonic = "DEY", //DEcrement Y
+                .mnemonic = "DEY", // DEcrement Y
                 .cycles = 2,
                 .opcode = 0x88,
                 .adressMode = "impl",
@@ -145,7 +145,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xC8 => {
             return Instruction{
-                .mnemonic = "INY", //INcrement Y
+                .mnemonic = "INY", // INcrement Y
                 .cycles = 2,
                 .opcode = 0xC8,
                 .adressMode = "impl",
@@ -155,7 +155,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         //ROL ( ROtate Left )
         0x2A => {
             return Instruction{
-                .mnemonic = "ROL", //INcrement Y
+                .mnemonic = "ROL", // ROtate Left
                 .cycles = 2,
                 .opcode = 0x2A,
                 .adressMode = "accum",
@@ -163,7 +163,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x26 => {
             return Instruction{
-                .mnemonic = "ROL", //INcrement Y
+                .mnemonic = "ROL", // ROtate Left
                 .cycles = 5,
                 .opcode = 0x26,
                 .adressMode = "ZP",
@@ -172,7 +172,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x36 => {
             return Instruction{
-                .mnemonic = "ROL", //INcrement Y
+                .mnemonic = "ROL", // ROtate Left
                 .cycles = 6,
                 .opcode = 0x36,
                 .adressMode = "ZPX",
@@ -181,7 +181,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x2E => {
             return Instruction{
-                .mnemonic = "ROL", //INcrement Y
+                .mnemonic = "ROL", // ROtate Left
                 .cycles = 6,
                 .opcode = 0x2E,
                 .adressMode = "abs",
@@ -191,7 +191,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x3E => {
             return Instruction{
-                .mnemonic = "ROL", //INcrement Y
+                .mnemonic = "ROL", // ROtate Left
                 .cycles = 7,
                 .opcode = 0x3E,
                 .adressMode = "absX",
@@ -203,7 +203,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         //ROR ( ROtate Right )
         0x6A => {
             return Instruction{
-                .mnemonic = "ROR", //INcrement Y
+                .mnemonic = "ROR", // ROtate Right
                 .cycles = 2,
                 .opcode = 0x6A,
                 .adressMode = "accum",
@@ -211,7 +211,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x66 => {
             return Instruction{
-                .mnemonic = "ROR", //INcrement Y
+                .mnemonic = "ROR", // ROtate Right
                 .cycles = 5,
                 .opcode = 0x66,
                 .adressMode = "ZP",
@@ -220,7 +220,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x76 => {
             return Instruction{
-                .mnemonic = "ROR", //INcrement Y
+                .mnemonic = "ROR", // ROtate Right
                 .cycles = 6,
                 .opcode = 0x76,
                 .adressMode = "ZPX",
@@ -229,7 +229,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x6E => {
             return Instruction{
-                .mnemonic = "ROR", //INcrement Y
+                .mnemonic = "ROR", // ROtate Right
                 .cycles = 6,
                 .opcode = 0x6E,
                 .adressMode = "abs",
@@ -239,7 +239,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0x7E => {
             return Instruction{
-                .mnemonic = "ROR", //INcrement Y
+                .mnemonic = "ROR", // ROtate Right
                 .cycles = 7,
                 .opcode = 0x7E,
                 .adressMode = "absX",
@@ -251,7 +251,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         //RTI ( ReTurn from Interrupt )
         0x40 => {
             return Instruction{
-                .mnemonic = "RTI", //INcrement Y
+                .mnemonic = "RTI", // ReTurn from Interrupt
                 .cycles = 6,
                 .opcode = 0x40,
                 .adressMode = "impl",
@@ -261,7 +261,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         //RTS ( ReTurn from Subroutine )
         0x60 => {
             return Instruction{
-                .mnemonic = "RTS",
+                .mnemonic = "RTS", // ReTurn from Subroutine
                 .cycles = 6,
                 .opcode = 0x60,
                 .adressMode = "impl",
@@ -271,7 +271,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         //SBC ( SuBtract with Carry )
         0xE9 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 2,
                 .opcode = 0xE9,
                 .adressMode = "immd",
@@ -280,7 +280,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xE5 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 3,
                 .opcode = 0xE5,
                 .adressMode = "ZP",
@@ -289,7 +289,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xF5 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 4,
                 .opcode = 0xF5,
                 .adressMode = "ZPX",
@@ -298,7 +298,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xED => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 4,
                 .opcode = 0xED,
                 .adressMode = "abs",
@@ -308,7 +308,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xFD => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 4,
                 .opcode = 0xFD,
                 .adressMode = "absX",
@@ -318,7 +318,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xF9 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 4,
                 .opcode = 0xF9,
                 .adressMode = "absY",
@@ -328,7 +328,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xE1 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 6,
                 .opcode = 0xE1,
                 .adressMode = "indrX",
@@ -337,7 +337,7 @@ pub fn decode(cpu: processor.CPU, opcode: u8) !Instruction {
         },
         0xF1 => {
             return Instruction{
-                .mnemonic = "SBC",
+                .mnemonic = "SBC", // SuBtract with Carry
                 .cycles = 5,
                 .opcode = 0xF1,
                 .adressMode = "indrY",
